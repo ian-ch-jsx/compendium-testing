@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import { getFilms } from './services/data';
 
 function App() {
+  console.log(getFilms());
   return (
     <div className="App">
       <header className="App-header">
