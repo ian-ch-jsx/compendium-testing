@@ -7,8 +7,8 @@ export async function getFilms() {
 export async function filmDesc() {
   const resp = await fetch('https://ghibliapi.herokuapp.com/films');
   const data = await resp.json();
-  data.map((date) => ({
-    release: date.release_date,
-  }));
-  return data.reverse();
+  const release = data.sort((a, b) => {
+    return Number(b['release_date']) - Number(a['release_date']);
+  });
+  return release;
 }
