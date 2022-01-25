@@ -16,7 +16,7 @@ export default function Compendium() {
     };
     fetchData();
   }, []);
-
+  if (loading) return <h1>loading...</h1>;
   return (
     <div>
       <FilmList films={films} setFilms={setFilms} />
