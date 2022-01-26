@@ -17,7 +17,6 @@ export default function Compendium() {
       } else {
         data = await getFilms();
       }
-
       setFilms(data);
       setLoading(false);
     };

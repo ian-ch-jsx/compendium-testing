@@ -7,8 +7,8 @@ export default function FilmList({ films }) {
         {films.map((item) => (
           <div className="film-card" key={item.id}>
             <h3>{item.title}</h3>
-            <p>{item.release_date}</p>
-            <img src={item.image} />
+            <p>released {item.release_date}</p>
+            <img src={item.image} alt="cover-art" />
           </div>
         ))}
       </div>

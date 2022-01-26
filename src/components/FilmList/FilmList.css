@@ -3,6 +3,7 @@
   margin: auto;
   justify-content: center;
   flex-wrap: wrap;
+  padding-top: 20px;
 }
 
 .film-card {
@@ -15,4 +16,19 @@
 .film-card img {
   width: 250px;
   border: 2px solid #fefefe;
+  opacity: 0.6;
+}
+
+.film-card img:hover {
+  opacity: 1;
+}
+
+.film-card p {
+  font-style: italic;
+  margin-top: 0;
+  color: grey;
+}
+.film-card h3 {
+  margin: 0;
+  padding: 0;
 }
