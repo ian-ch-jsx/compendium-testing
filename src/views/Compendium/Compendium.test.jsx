@@ -8,5 +8,5 @@ test('film list is rendered to the page', async () => {
   expect(loading).toBeInTheDocument();
 
   const filmCard = await screen.findAllByRole('img');
-  expect(filmCard).toHaveLength(21);
+  expect(filmCard).toHaveLength(22);
 });
