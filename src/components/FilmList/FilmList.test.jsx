@@ -11,9 +11,19 @@ const films = {
   release_date: '2006',
 };
 
+// const server = setupServer(
+//   rest.get('https://ghibliapi.herokuapp.com/films', (req, res, ctx) => {
+//     return res(ctx.json([films]));
+//   })
+// );
+
 const server = setupServer(
   rest.get('https://ghibliapi.herokuapp.com/films', (req, res, ctx) => {
-    return res(ctx.json([films]));
+    const select = req.url.searchParams.get('select');
+    if (select === '*') {
+      return res(ctx.json([films]));
+    }
+    return res(ctx.status(500), ctx.json('error'));
   })
 );
 
