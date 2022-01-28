@@ -1,12 +1,25 @@
 import { render, screen } from '@testing-library/react';
 import FilmList from './FilmList';
+import { rest } from 'msw';
+import { setupServer } from 'msw/node';
 
 const films = {
-  id: '2baf70d1-42bb-4437-b551-e5fed5a87abe',
-  title: 'Castle in the Sky',
-  image: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/npOnzAbLh6VOIu3naU5QaEcTepo.jpg',
-  release_date: '1986',
+  id: '7',
+  title: 'Pans Labyrinth',
+  image:
+    'https://m.media-amazon.com/images/M/MV5BMTg5ODQxODI4M15BMl5BanBnXkFtZTcwODk2MzA1OQ@@._V1_.jpg',
+  release_date: '2006',
 };
+
+const server = setupServer(
+  rest.get('https://ghibliapi.herokuapp.com/films', (req, res, ctx) => {
+    return res(ctx.json([films]));
+  })
+);
+
+beforeAll(() => server.listen());
+
+afterAll(() => server.close());
 
 test('should render a film card', async () => {
   render(<FilmList films={[films]} />);
