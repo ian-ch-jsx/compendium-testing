@@ -2,17 +2,21 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import FilmList from '../../components/FilmList/FilmList';
 import Controls from '../../components/Controls/Controls';
-import { filmDesc, getFilms } from '../../services/data';
-
+import { getFilms, filmDesc } from '../../services/data';
+// import { filmDesc } from '../../utils/utils';
 export default function Compendium() {
   const [films, setFilms] = useState([]);
+  const [filteredFilms, setFilteredFilms] = useState([]);
   const [loading, setLoading] = useState(true);
   const [order, setOrder] = useState('asc');
 
   useEffect(() => {
     const fetchData = async () => {
       let data;
+
       if (order === 'desc') {
+        console.log('hi there');
+
         data = await filmDesc();
       } else {
         data = await getFilms();
