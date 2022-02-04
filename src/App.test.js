@@ -15,27 +15,27 @@ const filmList = [
   {
     id: '7',
     title: 'Pans Labyrinth oldest',
-    image: 'firstimage.jpg',
+    image: 'newest.jpg',
     release_date: '200',
   },
   {
-    id: '71',
+    id: '8',
     title: 'Pans Labyrinth 2',
     image:
       'https://m.media-amazon.com/images/M/MV5BMTg5ODQxODI4M15BMl5BanBnXkFtZTcwODk2MzA1OQ@@._V1_.jpg',
     release_date: '2006',
   },
   {
-    id: '12',
+    id: '9',
     title: 'Pans Labyrinth newest',
-    image: 'lastimage.jpg',
+    image: 'oldest.jpg',
     release_date: '2032',
   },
 ];
 
 const server = setupServer(
   rest.get('https://ghibliapi.herokuapp.com/films', (req, res, ctx) => {
-    return res(ctx.json([filmList]));
+    return res(ctx.json(filmList));
   })
 );
 
@@ -54,7 +54,5 @@ test.only('order should change with select menu', async () => {
 
   const filmcards = await screen.findAllByAltText('cover-art');
 
-  screen.debug(filmcards[0].src);
-
-  expect(await filmcards[0].src).toContain('newestimage.jpg');
+  expect(filmcards[0].src).toBe('http://localhost/newest.jpg');
 });
