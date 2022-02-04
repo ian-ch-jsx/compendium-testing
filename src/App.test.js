@@ -9,7 +9,7 @@ test('renders header', () => {
   expect(title).toBeInTheDocument();
 });
 
-test.only('order should change with select menu', async () => {
+test('order should change with select menu', async () => {
   render(<Compendium />);
 
   const controls = await screen.findByRole('combobox');
