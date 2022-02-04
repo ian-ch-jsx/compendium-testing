@@ -5,7 +5,6 @@ export async function getFilms() {
 }
 
 export async function filmDesc() {
-  console.log('hello');
   const resp = await fetch('https://ghibliapi.herokuapp.com/films');
   const data = await resp.json();
   const release = data.sort((a, b) => {
