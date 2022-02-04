@@ -56,3 +56,4 @@ test.only('order should change with select menu', async () => {
 
   expect(filmcards[0].src).toBe('http://localhost/newest.jpg');
 });
+
